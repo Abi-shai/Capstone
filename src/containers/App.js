@@ -7,7 +7,7 @@ import SignIn from "../Routes/SignIn/SignIn"
 const Shop = () => {
   return (
     <div>
-      <p>Hellooooooo</p>
+      <p>Shop</p>
     </div>
   )
 }
