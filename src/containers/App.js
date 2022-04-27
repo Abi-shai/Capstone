@@ -1,16 +1,9 @@
-import CategoryItem from '../components/category-items/category-item.component'
+import Directory from '../components/Directory/Directory'
 import Categories from '../components/CategoriesData/categoriesData'
 
-
 const App = () => {
-  return (
-    <div className="categories_container">
-
-      {Categories.map((category) => {
-        return <CategoryItem id={category.id} category={category} />
-      })}
-
-    </div>
+  return(
+    <Directory categories={Categories} />
   )
 }
 
