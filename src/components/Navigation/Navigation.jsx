@@ -17,8 +17,8 @@ const Navigation = () => {
                 </Link>
                 <ul className='nav_list'>
                     <Link className='nav_list_element' to="/">Home</Link>
+                    <Link className='nav_list_element' to="/signIn">Sign In</Link>
                     <Link className='nav_list_element' to="/shop">Shop</Link>
-                    <Link className='nav_list_element' to="/hats">Hats</Link>
                     <Link className='nav_list_element' to="/sneakers">Sneakers</Link>
                 </ul>
             </nav>
