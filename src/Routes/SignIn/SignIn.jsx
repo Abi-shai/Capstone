@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 import { signInWithGooglePopup, createUsersDocumentFromAuth } from '../../utils/firebase/firebase'
-import SignUpForm from "../../components/sign-up/sign-up"
+import SignUpForm from "../../components/Sign-up/sign-up"
 
 const SignIn = () => {
 

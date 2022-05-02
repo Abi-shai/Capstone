@@ -1,0 +1,20 @@
+// .sign-up_text{
+//     margin-left: 2em;
+// }
+
+.form_wrapper{
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    gap: .5em;
+    margin-left: 2em;
+
+    .form_button{
+        width: 100px;
+        border: none;
+        padding: .5em 1em;
+        font-weight: bold;
+        color: white;
+        background-color: black;
+    }
+}
