@@ -3,7 +3,8 @@ import {
     getAuth, 
     signInWithPopup,
     GoogleAuthProvider,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword
 } from 'firebase/auth'
 import {
   getFirestore,
@@ -42,8 +43,6 @@ export const createUsersDocumentFromAuth = async (
   const userDocRef = doc(db, 'users', userAuth.uid)
 
   const userSnapshot = await getDoc(userDocRef)
-  console.log(userSnapshot.exists())
-  console.log(userDocRef)
 
   // If user doesnt exist create one
   if(!userSnapshot.exists()){
@@ -69,4 +68,12 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if(!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password)
+}
+
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+  if(!email || !password){
+    console.log('No credentials found')
+    return
+  }
+  return await signInWithEmailAndPassword(auth, email, password)
 }
