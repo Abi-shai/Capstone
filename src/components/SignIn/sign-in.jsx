@@ -1,13 +1,14 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { signInAuthUserWithEmailAndPassword  } from '../../utils/firebase/firebase'
 import { createUsersDocumentFromAuth } from "../../utils/firebase/firebase"
 import { signInWithGooglePopup } from "../../utils/firebase/firebase"
 import FormInput from "../Form-input/form-input"
 import Button from "../Button/button"
 import './sign-in.scss'
+import { UserContext } from "../../contexts/user.context"
 
 
-// Initial field state
+// Set default value of the inputs fields
 const defaultDisplayFields = {
     email: '',
     password: '',
@@ -23,7 +24,12 @@ const SignInForm = () =>{
         setFormFields(defaultDisplayFields)
     }
 
-    
+
+    // handles the setter of the user object on signing in
+    const { setCurrentUser } = useContext(UserContext)
+
+
+    // handles all the configs on inputs submitting
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -32,9 +38,9 @@ const SignInForm = () =>{
         }
         try {
 
-            const response = await signInAuthUserWithEmailAndPassword(email, password)
-            console.log(response)
+            const {user} = await signInAuthUserWithEmailAndPassword(email, password)
             resetFormFields()
+            setCurrentUser(user)
 
         } catch (error) {
 
@@ -52,13 +58,17 @@ const SignInForm = () =>{
 
     }
 
+
     const handleChange = (event) => {
         // Retreving the name and value from the event
         const {name, value} = event.target
 
+        // When the name of the input fields matches with a form field,
+        // calls the setFormFields and update the value
         setFormFields({...formFields, [name]: value})
         console.log(formFields)
     }
+
 
     const SignInWithGoogle = async () => {
         const {user} = await signInWithGooglePopup()
