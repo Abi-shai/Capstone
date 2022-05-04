@@ -6,7 +6,7 @@ import Button from "../Button/button"
 import './sign-up.scss'
 
 
-// Initial field state
+// Set initial value of the input fields
 const defaultDisplayFields = {
     displayName: '',
     email: '',
@@ -19,6 +19,10 @@ const SignUpForm = () =>{
     const [formFields, setFormFields] = useState(defaultDisplayFields)
     const { displayName, email, password, confirmPassword } = formFields
 
+    const resetFormFields = () => {
+        setFormFields(defaultDisplayFields)
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -28,15 +32,16 @@ const SignUpForm = () =>{
         }
 
         try {
-            const { user } = await createAuthUserWithEmailAndPassword(email, password)
+            const { user } = await createAuthUserWithEmailAndPassword(
+                email, 
+                password
+            )
             await createUsersDocumentFromAuth(user, { displayName })
 
-            alert('You have successfully signed up')
-            const resetFormFields = () => {
-                setFormFields(defaultDisplayFields)
-            }
             resetFormFields()
+            alert('You have successfully signed up')
             return
+            
         } catch (error) {
 
             if(error.code === 'auth/email-already-in-use'){
