@@ -1,0 +1,17 @@
+.cart-icon-container {
+    position: relative;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    cursor: pointer;
+
+    svg{
+        width: 25px;
+    }
+
+    .item-count{
+        position: absolute;
+        transform: translateX(8px) + translateY(2px);
+    }
+}

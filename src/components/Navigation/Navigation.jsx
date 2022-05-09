@@ -2,6 +2,7 @@ import { Outlet, Link } from 'react-router-dom'
 import { Fragment, useContext } from 'react'
 import { UserContext } from '../../contexts/user.context'
 import { signOutUser } from '../../utils/firebase/firebase'
+import CartIcon from '../Cart/cart'
 // Importing the svg logo as a component
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 
@@ -10,7 +11,7 @@ import './Navigation.scss'
 
 const Navigation = () => {
 
-    // Getting out / checking the value of the currentUser logged in
+    // Getting out checking the value of the currentUser logged in
     const { currentUser } = useContext(UserContext)
 
 
@@ -29,7 +30,8 @@ const Navigation = () => {
                         : (<Link className='nav_list_element' to="/auth">Sign in</Link>)
                     }
                     <Link className='nav_list_element' to="/shop">Shop</Link>
-                    <Link className='nav_list_element' to="/sneakers">Sneakers</Link>
+                    {/* <Link className='nav_list_element' to="/sneakers">Sneakers</Link> */}
+                    <CartIcon />
                 </ul>
             </nav>
             <Outlet />

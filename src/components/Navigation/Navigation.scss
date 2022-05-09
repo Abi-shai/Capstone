@@ -1,19 +1,18 @@
 .nav {
     display: grid;
     grid-template-columns: 2fr 1fr;
-
+    padding: 1em 0em;
     align-items: center;
-    width: 90%;
-    margin: 0 auto;
+    margin: 0 2em;
 
     &_list{
         list-style: none;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        padding: .5em;
         align-items: center;
-        justify-items: center;
-        gap: 2em;
+        align-self: center;
+        justify-self: flex-end;
+        gap: 1em;
 
         &_element{
             cursor: pointer;
