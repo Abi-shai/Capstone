@@ -3,6 +3,7 @@ import { Fragment, useContext } from 'react'
 import { UserContext } from '../../contexts/user.context'
 import { signOutUser } from '../../utils/firebase/firebase'
 import CartIcon from '../Cart/cart'
+import CartDropdown from '../Cart-Dropdown/cart-dropdown'
 // Importing the svg logo as a component
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 
@@ -33,6 +34,7 @@ const Navigation = () => {
                     {/* <Link className='nav_list_element' to="/sneakers">Sneakers</Link> */}
                     <CartIcon />
                 </ul>
+                <CartDropdown />
             </nav>
             <Outlet />
         </Fragment>
