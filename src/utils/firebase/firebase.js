@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app"
-import { 
+import {
     getAuth, 
     signInWithPopup,
     GoogleAuthProvider,
@@ -14,6 +14,9 @@ import {
   getDoc,
   setDoc
 } from 'firebase/firestore'
+
+
+// Setting up all the configuration for the firebase authentification proccess and database storage
 
 const firebaseConfig = {
   apiKey: "AIzaSyBJzNIkie85Qik8EvxBnntqF0M2KSZLtJ4",
@@ -32,18 +35,19 @@ provider.setCustomParameters({
     prompt: "select_account"
 })
 
+
 export const auth = getAuth()
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
-
 export const db = getFirestore()
 
+
+// Create the user auth credentials in the firebase authentification database
 export const createUsersDocumentFromAuth = async (
   userAuth, 
   additionnalInformation ={}) => {
-  if(!userAuth) return;
+  if(!userAuth) return
 
   const userDocRef = doc(db, 'users', userAuth.uid)
-
   const userSnapshot = await getDoc(userDocRef)
 
   // If user doesnt exist create one
@@ -66,11 +70,13 @@ export const createUsersDocumentFromAuth = async (
   return userDocRef
 }
 
+
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if(!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password)
 }
+
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if(!email || !password){
@@ -80,6 +86,6 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password)
 }
 
-export const signOutUser = async () => await signOut(auth)
 
+export const signOutUser = async () => await signOut(auth)
 export const onAuthStateChangeListenner = (callback) => onAuthStateChanged(auth, callback)

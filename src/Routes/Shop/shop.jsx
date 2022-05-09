@@ -9,7 +9,10 @@ const Shop = () => {
     return(
         <div className="categories_container">
             {products.map((product) => (
+
+                // spread the ProductCard props
                 <ProductCard key={product.id} product={product} />
+                
             ))}
         </div>
     )
