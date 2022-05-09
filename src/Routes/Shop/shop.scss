@@ -1,0 +1,11 @@
+.categories_container {
+    padding: 1em 1em;
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+}
