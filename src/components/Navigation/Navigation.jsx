@@ -1,6 +1,7 @@
 import { Outlet, Link } from 'react-router-dom'
 import { Fragment, useContext } from 'react'
 import { UserContext } from '../../contexts/user.context'
+import { CartContext } from '../../contexts/cart.context'
 import { signOutUser } from '../../utils/firebase/firebase'
 import CartIcon from '../Cart/cart'
 import CartDropdown from '../Cart-Dropdown/cart-dropdown'
@@ -14,6 +15,9 @@ const Navigation = () => {
 
     // Getting out checking the value of the currentUser logged in
     const { currentUser } = useContext(UserContext)
+
+    
+    const { isCartOpen } = useContext(CartContext)
 
 
     // Using link anchor tag for the router additionnal functionnalities
@@ -34,7 +38,7 @@ const Navigation = () => {
                     {/* <Link className='nav_list_element' to="/sneakers">Sneakers</Link> */}
                     <CartIcon />
                 </ul>
-                <CartDropdown />
+                {isCartOpen && <CartDropdown/>}
             </nav>
             <Outlet />
         </Fragment>
