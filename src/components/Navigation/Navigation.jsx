@@ -38,6 +38,7 @@ const Navigation = () => {
                     {/* <Link className='nav_list_element' to="/sneakers">Sneakers</Link> */}
                     <CartIcon />
                 </ul>
+                {/* when the cart is open then return the cartDropdown component */}
                 {isCartOpen && <CartDropdown/>}
             </nav>
             <Outlet />
