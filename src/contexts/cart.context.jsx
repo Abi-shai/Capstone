@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 // Handles the logic for the cart dropdown menu 
 const addCartItem = (cartItems, productToAdd) => {
@@ -61,13 +61,24 @@ export const CartContext = createContext({
     cartItems: [],
     addItemToCart: () => {},
     removeItemFromCart: () => {},
-    clearItemFromCart: () => {}
+    clearItemFromCart: () => {},
+    cartTotal: 0
 })
 
 export const CartProdiver = ({children}) => {
     const [isCartOpen, setIsCartOpen] = useState(false)
     const [cartItems, setCartItem] = useState([])
+    const [cartTotal, setCartTotal] = useState(0)
 
+
+    useEffect(() => {
+        const newCartTotal = cartItems.reduce(
+            (cartTotal, cartItem) => cartTotal + cartItem.quantity * cartItem.price,
+            0
+        )
+
+        setCartTotal(newCartTotal)
+    }, [cartItems])
 
     const addItemToCart = (productToAdd) => {
         setCartItem(addCartItem(cartItems, productToAdd))
@@ -77,7 +88,6 @@ export const CartProdiver = ({children}) => {
         setCartItem(removeCartitem(cartItems, cartItemToRemove))
     }
 
-    
     const clearItemFromCart = (cartItemToClear) => {
         setCartItem(clearCartItem(cartItems, cartItemToClear))
     }
@@ -88,7 +98,8 @@ export const CartProdiver = ({children}) => {
         addItemToCart,
         removeItemFromCart,
         clearItemFromCart,
-        cartItems
+        cartItems,
+        cartTotal,
     }
 
     return (
