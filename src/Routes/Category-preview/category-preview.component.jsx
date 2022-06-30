@@ -1,15 +1,14 @@
-import './category-preview.scss'
-import ProductCard from '../Products/products'
+import './category-preview.style.scss'
+import ProductCard from '../../components/Products/products'
 
 const CategoryPreview = ({ title, products }) => {
     return (
-        <div className='category-container'>
+        <div className='category-preview-container'>
             <h2>
                 <span className='title'>{title.toUpperCase()}</span>
             </h2>
             <div className="preview" >
                 {
-
                     // Filters and keep the first four elements of the index array
                     products
                         .filter((_, idx) => idx < 4)
