@@ -9,7 +9,12 @@ import CartDropdown from '../Cart-Dropdown/cart-dropdown'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 
 
-import './Navigation.scss'
+import {
+    NavigationContainer,
+    NavLinkContainer,
+    NavListElement,
+    NavListElementLink
+} from './Navigation.style.jsx'
 
 const Navigation = () => {
 
@@ -23,24 +28,24 @@ const Navigation = () => {
     // Using link anchor tag for the router additionnal functionnalities
     return (
         <Fragment>
-            <nav className='nav'>
-                <Link className='nav_logo' to="/">
+            <NavigationContainer as="nav">
+                <Link to="/">
                     <CrownLogo />
                 </Link>
-                <ul className='nav_list'>
-                    <Link className='nav_list_element' to="/">Home</Link>
+                <NavLinkContainer as="ul">
+                    <NavListElementLink as="li" to="/">Home</NavListElementLink>
                     {
                         currentUser
-                        ? (<span className='nav_list_element' onClick={signOutUser}>Sign out</span>)
-                        : (<Link className='nav_list_element' to="/auth">Sign in</Link>)
+                        ? (<NavListElement as="li" onClick={signOutUser}>Sign out</NavListElement>)
+                        : (<NavListElementLink as="li" to="/auth">Sign in </NavListElementLink>)
                     }
-                    <Link className='nav_list_element' to="/shop">Shop</Link>
+                    <NavListElementLink as="li" to="/shop">Shop</NavListElementLink>
                     {/* <Link className='nav_list_element' to="/sneakers">Sneakers</Link> */}
                     <CartIcon />
-                </ul>
+                </NavLinkContainer>
                 {/* when the cart is open then return the cartDropdown component */}
                 {isCartOpen && <CartDropdown/>}
-            </nav>
+            </NavigationContainer>
             <Outlet />
         </Fragment>
     )

@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext, useState, useEffect, Fragment } from "react"
 import { useParams } from "react-router-dom"
 
 import ProductCard from "../../components/Products/products"
@@ -17,16 +17,16 @@ const Category = () => {
     }, [category, categoriesMap])
 
     return(
-        <div className="category-container">
-            <h1>{category}</h1>
-
-            // && Returns only when the products are ready
-            {products &&
-                products.map((product) => {
-                    return <ProductCard key={product.id} product={product} />
-                })
-            }
-        </div>
+        <Fragment>
+            <h1 className="category-container-title">{category.toUpperCase()}</h1>
+            <div className="category-container">
+                {products &&
+                    products.map((product) => {
+                        return <ProductCard key={product.id} product={product} />
+                    })
+                }
+            </div>
+        </Fragment>
     )
 }
 
