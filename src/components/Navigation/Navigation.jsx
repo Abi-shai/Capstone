@@ -33,13 +33,13 @@ const Navigation = () => {
                     <CrownLogo />
                 </Link>
                 <NavLinkContainer as="ul">
-                    <NavListElementLink as="li" to="/">Home</NavListElementLink>
+                    <NavListElementLink to="/">Home</NavListElementLink>
                     {
                         currentUser
-                        ? (<NavListElement as="li" onClick={signOutUser}>Sign out</NavListElement>)
-                        : (<NavListElementLink as="li" to="/auth">Sign in </NavListElementLink>)
+                        ? (<NavListElement onClick={signOutUser}>Sign out</NavListElement>)
+                        : (<NavListElementLink to="/auth">Sign in </NavListElementLink>)
                     }
-                    <NavListElementLink as="li" to="/shop">Shop</NavListElementLink>
+                    <NavListElementLink to="/shop">Shop</NavListElementLink>
                     {/* <Link className='nav_list_element' to="/sneakers">Sneakers</Link> */}
                     <CartIcon />
                 </NavLinkContainer>
