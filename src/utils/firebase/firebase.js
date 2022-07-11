@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app"
 import {
-  getAuth, 
+  getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -115,6 +115,7 @@ export const getCategoriesAndContainers = async () => {
 
   const querySnapshot = await getDocs(q)
   const categoryMap = querySnapshot.docs.reduce((accumulator, docSnapshot) => {
+    // console.log(docSnapshot.data())
     const { title, items } = docSnapshot.data()
     accumulator[title.toLowerCase()] = items
     return accumulator

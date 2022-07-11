@@ -4,14 +4,11 @@ export const CartDropdownContainer = styled.div`
     display: grid;
     background-color: white;
     border: 2px solid black;
-    grid-template-rows: 80% 20%;
     justify-items: center;
     align-items: center;
-    position: relative;
+    overflow: scroll;
     width: 300px;
     height: 350px;
-    scrollbar-width: thin;
-    scroolbar-color: rebeccapurple green;
     padding: 2em;
     position: absolute;
     top: 80%;
